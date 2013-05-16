@@ -118,7 +118,7 @@ body
 .smartphone-option-background, 
 .smartphone-option-background-selected
 {
-	background-color:#d00355;
+	background-color:#008dd3;
 }
 .thumb-selected img
 {
@@ -151,7 +151,7 @@ body
 .menu-background, .sub-menu-holder
 {
 	background-color: #ffffff;
-    background-image:url(../assets/patterns/menu/menu_pattern_2.png);/*url(../assets/patterns/pattern_menu.png);*/
+    background-image:url(../assets/patterns/menu/menu_pattern_3.png);/*url(../assets/patterns/pattern_menu.png);*/
 	background-repeat:repeat;
 }
 

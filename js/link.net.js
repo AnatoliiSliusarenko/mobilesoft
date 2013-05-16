@@ -2046,6 +2046,12 @@ $(window).load(function(){
         storeFullWidthPreviewMedia();
         galleryItem.click(
             function(){
+            	alert('click OFF');
+            	return false;
+            	
+            	
+            	
+            	
                 currIndex = 0;
                 changeFWPreviewMediaDesc(-1);
                 var index = $(".full-width-item").index(this);
