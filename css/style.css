@@ -151,7 +151,7 @@ body
 .menu-background, .sub-menu-holder
 {
 	background-color: #ffffff;
-    background-image:url(../assets/patterns/menu/menu_pattern_1.png);/*url(../assets/patterns/pattern_menu.png);*/
+    background-image:url(../assets/patterns/menu/menu_pattern_2.png);/*url(../assets/patterns/pattern_menu.png);*/
 	background-repeat:repeat;
 }
 
@@ -252,10 +252,10 @@ submenu holder has overflow hidden */
 	clear:both;
 	position:relative;
 	float:left;
-	background-image:url(../assets/media/synergy_html5_logo.png);
+	background-image:url(../assets/media/logodesign_mobilesoft365_small.png);
 	background-repeat:no-repeat;
 	width: 140px;
-	height: 90px;
+	height: 30px;
 	margin: 28px 0 28px -70px;	
 	z-index: 8;
 	left:50%;
