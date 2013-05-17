@@ -9,7 +9,7 @@
 #adress-container span
 {
 	font-weight: bold;
-	color: #008dd3;
+	color: black;
 }
 
 #adress-container strong
@@ -807,8 +807,8 @@ footer
 	left:0px;
 }
 .module-position-cc 
-{
-
+{ 	
+	
 }
 .module-position-no-shadow-cc 
 {
@@ -2722,10 +2722,11 @@ h1, h2, h3, h4, h5, h6
 	float: left;
     position: relative;
     z-index: 2;
+    top: 0px !important;
 }
 .module-columns
 {
-	width:966px;
+	width:100%;
 	height:100%;
 }
 #module-columns-container, #module-columns-preview
@@ -2781,13 +2782,19 @@ h1, h2, h3, h4, h5, h6
 	width:100%;
 	margin: 0px 5px 0px 5px;	
 }
+
+.filter-button span {
+	vertical-align: sub;
+}
+
 .filter-button
 {
+	height: 32px;
 	position:relative;
 	float:right;
 	display:block;	
 	margin: 0px 0px 0px 4px;
-	padding: 4px 13px;
+	padding: 0px 13px;
 	font-family: PT Sans; /*'Open Sans',sans-serif;*/
 	font-size: 13px;	
 	color: #3f3f3f;
@@ -2848,11 +2855,11 @@ h1, h2, h3, h4, h5, h6
 {
 	position:relative;
 	float:left;
-	width: 300px;
-	height: 260px;
+	width: 380px;
+	height: 280px;
 	background-color:#FFFFFF;
-	margin-right: 3px;
-	margin-bottom: 3px;	
+	margin-right: 1px;
+	margin-bottom: 1px;	
 	cursor:hand;
 	cursor:pointer;
 	z-index: 3;
@@ -2866,14 +2873,17 @@ h1, h2, h3, h4, h5, h6
 {
 	margin-bottom: 0px;
 }
+.third-thumb-image img {
+	width:100% !important;
+	
+}
+
 .third-thumb-image
 {
 	position:relative;
 	float:left;	
-	width: 298px;
-	height:200px;
-	margin-left: 1px;
-	margin-top: 1px;
+	width: 100%;
+	height:230px;
 	overflow:hidden;	
 	background-color:#FFFFFF;
 	background-image:url(../assets/loaders/loader_circle.gif);
@@ -3202,7 +3212,8 @@ h1, h2, h3, h4, h5, h6
 	position:relative;
 	float:left;
 	width: 100%;
-    margin-top: 9px;
+    margin-top: 4px;
+    padding: 0 !important;
 	overflow:hidden;
 }
 .thumb-tag p

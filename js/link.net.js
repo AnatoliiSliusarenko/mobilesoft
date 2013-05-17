@@ -7,7 +7,7 @@
  
  /* start GENERAL CUSTOMIZATION PROPERTIES */
 var templateBaseURL         = "http://localhost/mobilesoft/";/*"http://themes.mediacreed.com/html/synergy/"*/ 
-var themeColor              = "#d00355";
+var themeColor              = "#008dd3";
 var menuActive              = true;
 var menuHoverActive         = true; /* it will change to false if menuActive == true. If 'menuActive' 
                                         is false and this true than on hover it will show the menu */ 
