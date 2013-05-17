@@ -2,7 +2,7 @@
 	display:block;
 	font-size: 13px;
 	font-style: normal;
-	margin-left:25px;
+	margin-left:10px;
 	margin-top: 10px;
 	margin-bottom: 30px;
 }
@@ -203,7 +203,7 @@ body
 /* -------- MENU AND  SUBMENU SIZE ------- */
 .template-menu
 {
-	margin: 0 0 0 20px;
+	margin: 0 0 0 10px;
 }
 .template-menu,
 .menu-option-holder, 
@@ -211,7 +211,7 @@ body
 .menu-option-text,
 .sub-menu-option-text
 {	
-	width: 210px;
+	width: 150px;
 }
 .sub-menu-holder,
 .menu-option-background
@@ -221,7 +221,7 @@ body
 .sub-menu-holder
 {
 	width: 84%;
-	margin-left:220px; /*  + menu-hider width so the submenu appears after the vertical hider strip*/ 
+	margin-left:160px; /*  + menu-hider width so the submenu appears after the vertical hider strip*/ 
 }
 
 /* START fix IE 8: we add 2 more px so it fills the gap. 
@@ -267,7 +267,7 @@ submenu holder has overflow hidden */
 {
 	position:absolute;
 	left:3px;
-	top: 68px;
+	top: 35px;
 	height: 30px;
     width: 20px;
 	/*background-color:#d00355;*/
@@ -413,7 +413,7 @@ footer
 	margin-top:500px;
     position:relative;
     display:block !important;
-    width: 230px;
+    width: 150px;
     height: 74px;
 	/*left: -230px;*/
    /* visibility:hidden;*/
@@ -431,7 +431,7 @@ footer
 #footer-social-holder
 {    
     display:block;
-    margin: 0px auto;
+    margin: 0px 10px;
     width: 150px;
     height: 28px;
 }
@@ -2733,7 +2733,7 @@ h1, h2, h3, h4, h5, h6
 	position: relative;
     float:left;
 	display:inline-block;
-	margin:40px 14px;
+	margin:10px 14px;
 	z-index:2;
 }
 #module-columns-preview{ overflow:hidden; }
@@ -2840,7 +2840,7 @@ h1, h2, h3, h4, h5, h6
 	background-image:url(../assets/loaders/loader_circle.gif);
     background-repeat:no-repeat;
 	background-position:center;
-	z-index:1;
+	z-index:1; 
 }
 
 /************* third-column ************/
@@ -2851,8 +2851,8 @@ h1, h2, h3, h4, h5, h6
 	width: 300px;
 	height: 260px;
 	background-color:#FFFFFF;
-	margin-right: 16px;
-	margin-bottom: 16px;	
+	margin-right: 3px;
+	margin-bottom: 3px;	
 	cursor:hand;
 	cursor:pointer;
 	z-index: 3;
@@ -3687,7 +3687,7 @@ h1, h2, h3, h4, h5, h6
 	
 	.module-galleries{ width: 486px; }
 	
-	#module-columns-container{ margin: 40px 0px; }
+	#module-columns-container{ margin: 140px 0px; }
 	.filter-button{ font-size: 12px; margin: 0 0 0 2px; padding: 4px; }
 	
 }
