@@ -1,3 +1,7 @@
+.nolink a:hover 
+{
+	cursor: default;
+}
 #adress-container {
 	display:block;
 	font-size: 13px;
@@ -220,7 +224,7 @@ body
 }
 .sub-menu-holder
 {
-	width: 84%;
+	width: 100%;
 	margin-left:160px; /*  + menu-hider width so the submenu appears after the vertical hider strip*/ 
 }
 
@@ -306,11 +310,14 @@ submenu holder has overflow hidden */
 {
 	margin-bottom: 1px;
 }
+
+
 .menu-option-holder:hover, .sub-menu-option-holder:hover, .smartphone-option-holder:hover
 {
 	cursor: pointer;
 	cursor: hand;		
 }
+
 .menu-option-holder,
 .menu-option-background,
 .menu-option-background-selected,
@@ -336,6 +343,10 @@ submenu holder has overflow hidden */
 {
 	position:absolute;
     z-index:2;
+}
+.menu-option-text span
+{
+	margin-left: 15px;
 }
 .menu-option-text a, .menu-option-sign, .sub-menu-option-text a, .smartphone-option-text a
 {
@@ -2734,7 +2745,7 @@ h1, h2, h3, h4, h5, h6
 	position: relative;
     float:left;
 	display:inline-block;
-	margin:10px 14px;
+	margin:10px 0px;
 	z-index:2;
 }
 #module-columns-preview{ overflow:hidden; }
@@ -2771,8 +2782,8 @@ h1, h2, h3, h4, h5, h6
 	width:100%;
 	height: 1px;
 	background-color:#D9D9D9;
-	margin-top:10px;
-	margin-bottom: 20px;
+	margin-top:0px;
+	margin-bottom: 0px;
 }
 #filter-buttons-holder
 {
@@ -2858,8 +2869,8 @@ h1, h2, h3, h4, h5, h6
 	width: 380px;
 	height: 280px;
 	background-color:#FFFFFF;
-	margin-right: 1px;
-	margin-bottom: 1px;	
+	margin-right: 0px;
+	margin-bottom: 0px;	
 	cursor:hand;
 	cursor:pointer;
 	z-index: 3;

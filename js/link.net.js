@@ -2046,12 +2046,6 @@ $(window).load(function(){
         storeFullWidthPreviewMedia();
         galleryItem.click(
             function(){
-            	alert('click OFF');
-            	return false;
-            	
-            	
-            	
-            	
                 currIndex = 0;
                 changeFWPreviewMediaDesc(-1);
                 var index = $(".full-width-item").index(this);
@@ -3466,6 +3460,12 @@ $(window).load(function(){
         endPreviousModule = false;
     }
     function menuOptionHover( event ){
+       //---custom add---------------------------------------
+       if ($(event.currentTarget).hasClass('nolink')) 
+       {
+    	   return;
+       }
+       //----------------------------------------------------
        var idx = event.data.idx,
            subMenuHol = menuOptionsArr[ idx ][ 5 ];
        if( event.type == "mouseenter" ){
