@@ -1635,15 +1635,17 @@ $(window).load(function(){
         resetBtn = "", sendBtn = "", sendBtnText = "", btnTextSend = ""; 
         
     function contactFormSetup(){
-        name = $("#contact-form #name"),
-        email = $("#contact-form #email"),
-        phone = $("#contact-form #phone"),
+    	return;
+        name = $("#contact-form #name");
+        email = $("#contact-form #email");
+        phone = $("#contact-form #phone");
         messg = $("#contact-form #message");
-            
-        nameDefTxt = name.val(),
-        emailDefTxt = email.val(),
-        phoneDefTxt = phone.val(),
+        
+        nameDefTxt = name.val();
+        emailDefTxt = email.val();
+        phoneDefTxt = phone.val();
         messgDefTxt = messg.val();
+
         
         resetBtn = $("#contact-form #form-reset");
         sendBtn = $("#contact-form #form-send");
