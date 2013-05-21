@@ -18,8 +18,8 @@ var customPageStartURL      = "#portfolio.html";
 var customPageStartSide     = "none";
 var customPageStartType     = "full_width_gallery";
 
-var phpUrlPath             = "php/contact_synergy.php";
-var contactFormDemo         = true; /* SET IT TO FALSE FOR CONTACT FORM TO WORK */
+var phpUrlPath             = "php/contact_mobilesoft.php";
+var contactFormDemo         = false; /* SET IT TO FALSE FOR CONTACT FORM TO WORK */
  /* end   GENERAL CUSTOMIZATION PROPERTIES */ 
  
 
@@ -1532,19 +1532,20 @@ $(window).load(function(){
         var textPageInstanceHolder    = $( txt_modCont);
         var textPageInstance          = $( "#module-wrapper", textPageInstanceHolder);
         if( textPageInstance.length <= 0 ){return;}
-        var mapHolder   = $("#module-container #map-holder");
+        var $mapHolder   = $("#module-container #map-holder");
         var winH        = $(window).height();
         var winW        = $(window).width();
-        var mapW        = screen.width;/**/
-        var mapLeft     = (- get_OffsetWidth()) * .5;
-        var mapH        = mapHolder.height();          
-        if( mapHolder.length > 0 ){
-           mapHolder.attr("style", "display: inline; visibility: visible;");
-           mapHolder.css("opacity", "0").css("width", mapW);   
-           mapHolder.css("left", mapLeft + "px");     
-           TweenMax.to( mapHolder, .3, {css:{opacity: "1"}, easing: Sine.easeOut });
-           var iconSize = mapHolder.attr("data-size").split(",");
-           var anchor = mapHolder.attr("data-anchor").split(",");     
+        var mapW        = window.width-get_OffsetWidth()-$("#module-scrollbar-holder_v2").width();//screen.width;/**/
+        var mapLeft     = 0;//(- get_OffsetWidth()) * .5;
+       
+        var mapH        = $mapHolder.height();          
+        if( $mapHolder.length > 0 ){
+           $mapHolder.attr("style", "display: inline; visibility: visible;");
+           $mapHolder.css("opacity", "0").css("width", mapW);   
+           $mapHolder.css("left", mapLeft + "px");  
+           TweenMax.to( $mapHolder, .3, {css:{opacity: "1"}, easing: Sine.easeOut });
+           var iconSize = $mapHolder.attr("data-size").split(",");
+           var anchor = $mapHolder.attr("data-anchor").split(",");     
         }  
         
         var currWindowW             = $(window).width() - get_OffsetWidth() - $(t_scrBarV2).width();
@@ -1557,15 +1558,15 @@ $(window).load(function(){
         textPageInstance.css("width", currWindowW); 
         moduleUpdate( textPageInstanceHolder, textPageInstance, $("div:first", textPageInstance), sideType );                 
         
-		var modContact  = $("#module-container #module-contact");
-		var modContactH = modContact.height();
+		var $modContact  = $("#module-container #module-contact");
+		var modContactH = $modContact.height();
         var conH        = ((winH - mapH) >= modContactH ) ? (winH - mapH) : modContactH;
-        modContact.attr( "style", "bottom: " + (-conH) + "px; height: "+ conH + "px; visibility: visible;" );	
+        $modContact.attr( "style", "bottom: " + (-conH) + "px; height: "+ conH + "px; visibility: visible;" );	
         contactFormSetup();  
         moduleUpdate_contact();  	
-		TweenMax.to(  modContact, .6, { css:{ bottom:"0px" },  ease:Circ.easeInOut,
+		TweenMax.to(  $modContact, .6, { css:{ bottom:"0px" },  ease:Circ.easeInOut,
                 onComplete: function(){ 
-                    mapHolder.gMap({
+                    $mapHolder.gMap({
                                     controls: {
                                         panControl: true,
                                         zoomControl: true,
@@ -1574,14 +1575,14 @@ $(window).load(function(){
                                         streetViewControl: false,
                                         overviewMapControl: false
                                     },
-                                    scrollwheel: false,
-                                	address: mapHolder.attr("data-address"),
-                                	zoom: 16,
+                                    scrollwheel: true,
+                                	address: $mapHolder.attr("data-address"),
+                                	zoom: 5,
                                 	markers:[{
-                                			latitude: mapHolder.attr("data-latitude"),
-                                			longitude: mapHolder.attr("data-longitude"),
+                                			latitude: $mapHolder.attr("data-latitude"),
+                                			longitude: $mapHolder.attr("data-longitude"),
                                             icon: {
-                                				image: mapHolder.attr("data-icon"),
+                                				image: $mapHolder.attr("data-icon"),
                                 				iconsize: [iconSize[0], iconSize[1]],
                                 				iconanchor: [anchor[0], anchor[1]]
                                 			}
@@ -1605,22 +1606,22 @@ $(window).load(function(){
         });
 		$(".form-input-half-left input, .form-input-half-right input, .form-input-large input, .form-input-textarea textarea").focus(
 			function() {
-			                var obj    = $(this),
-                                parent = obj.parent();
-			                if( parent.hasClass("form-input-error-border") == true ){
-			                   setFormInputBorder( parent, "form-input-error-border", "form-input-border" );    
+			                var $obj    = $(this),
+                                $parent = $obj.parent();
+			                if( $parent.hasClass("form-input-error-border") == true ){
+			                   setFormInputBorder( $parent, "form-input-error-border", "form-input-border" );    
 			                }
-							if( obj.val() == (obj.attr('name') + ' ' + '*' ) ){
-									inputDefaultText = obj.val();	
-									obj.val('');
+							if( $obj.val() == ($obj.attr('name') + ' ' + '*' ) ){
+									inputDefaultText = $obj.val();	
+									$obj.val('');
 							}
-							TweenMax.to( $(".form-input-background", parent), .6, { css:{backgroundColor:"#ffffff", opacity:"1"}, ease:Circ.easeOut });
+							TweenMax.to( $(".form-input-background", $parent), .6, { css:{backgroundColor:"#ffffff", opacity:"1"}, ease:Circ.easeOut });
         });	
 		$(".form-input-half-left input, .form-input-half-right input, .form-input-large input, .form-input-textarea textarea").focusout(
 			function() {
-			                var obj = $(this); 
-							if( obj.val() == '' || obj.val() == ' ' )obj.val( inputDefaultText );
-							TweenMax.to( $(".form-input-background", obj.parent()), .6, { css:{backgroundColor:"#9e9e9e", opacity:"0.2"}, ease:Circ.easeOut });
+			                var $obj = $(this); 
+							if( $obj.val() == '' || $obj.val() == ' ' )$obj.val( inputDefaultText );
+							TweenMax.to( $(".form-input-background", $obj.parent()), .6, { css:{backgroundColor:"#9e9e9e", opacity:"0.2"}, ease:Circ.easeOut });
         });
 	}
     function showMap(){
@@ -1635,79 +1636,98 @@ $(window).load(function(){
         resetBtn = "", sendBtn = "", sendBtnText = "", btnTextSend = ""; 
         
     function contactFormSetup(){
-    	return;
-        name = $("#contact-form #name");
-        email = $("#contact-form #email");
-        phone = $("#contact-form #phone");
-        messg = $("#contact-form #message");
+    	
+        $name = $("#contact-form #name");
+        $email = $("#contact-form #email");
+        $phone = $("#contact-form #phone");
+        $messg = $("#contact-form #message");
         
-        nameDefTxt = name.val();
-        emailDefTxt = email.val();
-        phoneDefTxt = phone.val();
-        messgDefTxt = messg.val();
+        nameDefTxt = $name.val();
+        emailDefTxt = $email.val();
+        phoneDefTxt = $phone.val();
+        messgDefTxt = $messg.val();
 
         
-        resetBtn = $("#contact-form #form-reset");
-        sendBtn = $("#contact-form #form-send");
-        sendBtnText = $("p", sendBtn).text();
-        btnTextSend = (sendBtn.attr("data-sending-txt") != undefined ) ? sendBtn.attr("data-sending-txt") : "null";
+        $resetBtn = $("#contact-form #form-reset");
+        $sendBtn = $("#contact-form #form-send");
+        sendBtnText = $("p", $sendBtn).text();
+        btnTextSend = ($sendBtn.attr("data-sending-txt") != undefined ) ? $sendBtn.attr("data-sending-txt") : "null";
         
-        var parentArr = [name.parent(name), email.parent(email), phone.parent(phone), messg.parent(messg)];
+        var parentArr = [$name.parent($name), $email.parent($email), $phone.parent($phone), $messg.parent($messg)];
         
-        var responseForm = $("#response-form");
+        var $responseForm = $("#response-form");
             
-        resetBtn.click(function(){   
+        $resetBtn.click(function(){   
             resetFormValues();
             setFormArrInputBorder( parentArr, "form-input-error-border", "form-input-border" );           
-            TweenMax.to( responseForm, .4, {css:{opacity:0}, delay:0.1, easing:Sine.easeOut, onComplete: function(){
-                                  $("p", responseForm).css("display", "inline-block");
-                                  $("#form-warning", responseForm).css("display", "inline-block");
+            TweenMax.to( $responseForm, .4, {css:{opacity:0}, delay:0.1, easing:Sine.easeOut, onComplete: function(){
+                                  $("p", $responseForm).css("display", "inline-block");
+                                  $("#form-warning", $responseForm).css("display", "inline-block");
             }});
         });
         
         var sendingVal = false;
-        sendBtn.click(function(){          
+        $sendBtn.click(function(){  
             if( sendingVal == true )return
             var validForm = validateForm();
-            responseForm.css("display", "inline-block").css("opacity", "0");
+            $responseForm.css("display", "inline-block").css("opacity", "0");
             if( validForm.valid == true ){
                 sendingVal = true;                                 
                 if( contactFormDemo == true ){
                     if( btnTextSend != "null" ){
-                        changeTxtSendBtn( $("p", sendBtn), btnTextSend );
-                        TweenMax.to( sendBtn, .6, { css:{opacity: 0.5}, ease:Sine.easeOut, onComplete: function(){
+                        changeTxtSendBtn( $("p", $sendBtn), btnTextSend );
+                        TweenMax.to( $sendBtn, .6, { css:{opacity: 0.5}, ease:Sine.easeOut, onComplete: function(){
                                  sendingVal = false;
-                                 changeTxtSendBtn( $("p", sendBtn), sendBtnText )
-                                 TweenMax.to( sendBtn, .4, {css:{opacity: 1}, easing:Sine.easeOut});
+                                 changeTxtSendBtn( $("p", $sendBtn), sendBtnText )
+                                 TweenMax.to( $sendBtn, .4, {css:{opacity: 1}, easing:Sine.easeOut});
                                  runSendAnimation( "inline-block", "none", "none" );
                         }});   
                     }  
                 }else{
                     if( btnTextSend != "null" ){
-                        changeTxtSendBtn( $("p", sendBtn), btnTextSend );
-                        TweenMax.to( sendBtn, .6, { css:{opacity: 0.5}, ease:Sine.easeOut});   
+                        changeTxtSendBtn( $("p", $sendBtn), btnTextSend );
+                        TweenMax.to( $sendBtn, .6, { css:{opacity: 0.5}, ease:Sine.easeOut});   
                     }
-                    $.ajax({
+                    /*$.ajax({
                        url: phpUrlPath,
                        type: "post",
-                       data: ({senderName : name.val(), senderEmail : email.val(), senderPhone : phone.val(), senderMessage : messg.val()}),
+                       data: ({senderName : $name.val(), senderEmail : $email.val(), senderPhone : $phone.val(), senderMessage : $messg.val()}),
                        dataType: "json",
                        success: function(data){
-                         responseForm.css("display", "inline-block").css("opacity", "1");
-                         $("p", responseForm).css("display", "inline-block");
+                         $responseForm.css("display", "inline-block").css("opacity", "1");
+                         $("p", $responseForm).css("display", "inline-block");
                          if(data.result == true){
                             runSendAnimation( "inline-block", "none", "none" );
                          }
                          else{
-                            $("#server-error", responseForm).empty().text(data.msg);
+                            $("#server-error", $responseForm).empty().text(data.msg);
                             runSendAnimation( "none", "none", "inline-block" );
                          }
                          
-                         changeTxtSendBtn( $("p", sendBtn), sendBtnText );
-                         TweenMax.to( sendBtn, .4, {css:{opacity: 1}, easing:Sine.easeOut});
+                         changeTxtSendBtn( $("p", $sendBtn), sendBtnText );
+                         TweenMax.to( $sendBtn, .4, {css:{opacity: 1}, easing:Sine.easeOut});
                          sendingVal = false;                         
+                       },
+                       error: function(err){
+                    	   debugger;
                        }
-                     });
+                     });*/
+                    
+                    $.getJSON(phpUrlPath, {senderName : $name.val(), senderEmail : $email.val(), senderPhone : $phone.val(), senderMessage : $messg.val()}, function(data){
+                    	$responseForm.css("display", "inline-block").css("opacity", "1");
+                        $("p", $responseForm).css("display", "inline-block");
+                        if(data.result == true){
+                           runSendAnimation( "inline-block", "none", "none" );
+                        }
+                        else{
+                           $("#server-error", $responseForm).empty().text(data.msg);
+                           runSendAnimation( "none", "none", "inline-block" );
+                        }
+                        
+                        changeTxtSendBtn( $("p", $sendBtn), sendBtnText );
+                        TweenMax.to( $sendBtn, .4, {css:{opacity: 1}, easing:Sine.easeOut});
+                        sendingVal = false;
+                    });
                 }  
             }
             else{
@@ -1715,15 +1735,15 @@ $(window).load(function(){
                    var arr = validForm.highlightInp,
                         t = arr.length;                        
                     while(t--){
-                        var parent = arr[ t ].parent(arr[ t ]);                            
+                        var parent = $(arr[ t ]).parent(arr[ t ]);                            
                         setFormInputBorder( parent, "form-input-border", "form-input-error-border" );
                     }    
                     
                 }
-                responseForm.css("display", "inline-block").css("opacity", "0");
-                $("p", responseForm).css("display", "none");
-                $("#form-warning", responseForm).css("display", "inline-block");
-                TweenMax.to( responseForm, .4, {css:{opacity: 1}, delay: 0.1, easing:Sine.easeOut});
+                $responseForm.css("display", "inline-block").css("opacity", "0");
+                $("p", $responseForm).css("display", "none");
+                $("#form-warning", $responseForm).css("display", "inline-block");
+                TweenMax.to( $responseForm, .4, {css:{opacity: 1}, delay: 0.1, easing:Sine.easeOut});
             }
              
         });
@@ -1732,32 +1752,32 @@ $(window).load(function(){
         }
         function validateForm(){
             var valid = true,
-                nameVal = name.val(),
-                emailVal = email.val(),
-                phoneVal = phone.val(),
-                messgVal = messg.val();
+                nameVal = $name.val(),
+                emailVal = $email.val(),
+                phoneVal = $phone.val(),
+                messgVal = $messg.val();
              
             var highlightInput = [];
             var i = 0;    
             if( nameVal == nameDefTxt || nameVal == "" ){
                 valid = false;
-                highlightInput[i] = name;
+                highlightInput[i] = $name;
                 i++;
             }
             
             if( emailVal == emailDefTxt || emailVal == "" || isValidEmailAddress( emailVal ) == false ){
                 valid = false;
-                highlightInput[i] = email;
+                highlightInput[i] = $email;
                 i++;
             }
             if( phoneVal == phoneDefTxt || phoneVal == "" || isValidPhone( phoneVal ) == false ){
                 valid = false;
-                highlightInput[i] = phone;
+                highlightInput[i] = $phone;
                 i++;
             }
             if( messgVal == messgDefTxt || messgVal == "" ){
                 valid = false;
-                highlightInput[i] = messg;
+                highlightInput[i] = $messg;
                 i++;
             }
             highlightInput = ( highlightInput.length > 0 ) ? highlightInput : "null";
@@ -1766,22 +1786,22 @@ $(window).load(function(){
                                
     }
     function resetFormValues(){
-        name.val( nameDefTxt );
-        email.val( emailDefTxt );
-        phone.val( phoneDefTxt );
-        messg.val( messgDefTxt );
+        $name.val( nameDefTxt );
+        $email.val( emailDefTxt );
+        $phone.val( phoneDefTxt );
+        $messg.val( messgDefTxt );
     }
     function runSendAnimation( v1, v2, v3  ){
-        var responseForm = $("#response-form");
-        if( responseForm.length > 0 ){
+        var $responseForm = $("#response-form");
+        if( $responseForm.length > 0 ){
             resetFormValues();
-            responseForm.css("display", "inline-block").css("opacity", "0");
-            $("p", responseForm).css("display", v1);
-            $("#form-warning", responseForm).css("display", v2);
-            $("#server-error", responseForm).css("display", v3);
+            $responseForm.css("display", "inline-block").css("opacity", "0");
+            $("p", $responseForm).css("display", v1);
+            $("#form-warning", $responseForm).css("display", v2);
+            $("#server-error", $responseForm).css("display", v3);
             var delay = (v3 != "none") ? 2 : 1.3;
-            TweenMax.to( responseForm, .4, {css:{opacity:1}, easing:Sine.easeOut, onComplete: function(){
-                     TweenMax.to( responseForm, .4, {css:{opacity: 0}, delay: delay, easing:Sine.easeOut});
+            TweenMax.to( $responseForm, .4, {css:{opacity:1}, easing:Sine.easeOut, onComplete: function(){
+                     TweenMax.to( $responseForm, .4, {css:{opacity: 0}, delay: delay, easing:Sine.easeOut});
             }});
         }
     }
@@ -3953,10 +3973,9 @@ $(window).load(function(){
         var dd                        = $("#module-container").width(); 
         $("#module-contact-holder").css("left", (dd - $("#module-contact-holder").width())*.5 + "px");
 
-        
-        var mapW        = screen.width;
-        var mapLeft     = (- get_OffsetWidth()) * .5;
-        if( mapHolder.length > 0 ){TweenMax.to(mapHolder, .3, {css:{left: mapLeft}, easing:Sine.easeOut});}
+        var mapW        = window.width-get_OffsetWidth()-$("#module-scrollbar-holder_v2").width();//screen.width;
+        var mapLeft     = 0;//(- get_OffsetWidth()) * .5;
+        if( mapHolder.length > 0 ){TweenMax.to(mapHolder, .3, {css:{left: mapLeft, width: mapW}, easing:Sine.easeOut});}
         
         var currWindowW             = $(window).width() - get_OffsetWidth() - $(t_scrBarV2).width();
         if( touchDevice == 1){ currWindowW = $(window).width() - templateMenuW; }  
