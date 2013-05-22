@@ -1580,12 +1580,12 @@ $(window).load(function(){
                                 	zoom: 5,
                                 	markers:[{
                                 			latitude: $mapHolder.attr("data-latitude"),
-                                			longitude: $mapHolder.attr("data-longitude"),
+                                			longitude: $mapHolder.attr("data-longitude")/*,
                                             icon: {
                                 				image: $mapHolder.attr("data-icon"),
                                 				iconsize: [iconSize[0], iconSize[1]],
                                 				iconanchor: [anchor[0], anchor[1]]
-                                			}
+                                			}*/
                                		}]
                                 });                         
                 }
@@ -1713,7 +1713,8 @@ $(window).load(function(){
                        }
                      });*/
                     
-                    $.getJSON(phpUrlPath, {senderName : $name.val(), senderEmail : $email.val(), senderPhone : $phone.val(), senderMessage : $messg.val()}, function(data){
+                    $.post(phpUrlPath, {'senderName' : $name.val(), 'senderEmail' : $email.val(), 'senderPhone' : $phone.val(), 'senderMessage' : $messg.val()}, function(data){
+                    	data = $.parseJSON(data);
                     	$responseForm.css("display", "inline-block").css("opacity", "1");
                         $("p", $responseForm).css("display", "inline-block");
                         if(data.result == true){
