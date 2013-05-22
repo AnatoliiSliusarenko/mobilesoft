@@ -1657,12 +1657,13 @@ $(window).load(function(){
         
         var $responseForm = $("#response-form");
             
-        $resetBtn.click(function(){   
+        $resetBtn.click(function(){
             resetFormValues();
             setFormArrInputBorder( parentArr, "form-input-error-border", "form-input-border" );           
+            
             TweenMax.to( $responseForm, .4, {css:{opacity:0}, delay:0.1, easing:Sine.easeOut, onComplete: function(){
-                                  $("p", $responseForm).css("display", "inline-block");
-                                  $("#form-warning", $responseForm).css("display", "inline-block");
+                                  $("p", $responseForm).css("display", "none");//inline-block
+                                  $("#form-warning", $responseForm).css("display", "none");//inline-block
             }});
         });
         
@@ -1793,7 +1794,7 @@ $(window).load(function(){
         $messg.val( messgDefTxt );
     }
     function runSendAnimation( v1, v2, v3  ){
-        var $responseForm = $("#response-form");
+    	var $responseForm = $("#response-form");
         if( $responseForm.length > 0 ){
             resetFormValues();
             $responseForm.css("display", "inline-block").css("opacity", "0");
@@ -3503,7 +3504,6 @@ $(window).load(function(){
        if( event.type == "mouseenter" ){
             menuOptionsArr[ idx ][ 3 ][ 0 ].css("width", menuOptionsArr[ idx ][ 4 ]); 
             TweenMax.to( menuOptionsArr[ idx ][ 2 ], menuAnimDuration, { css:{marginLeft: (0+offset)+"px", width: _menuWidth}, ease:menuAnimEase });
-			debugger;
             TweenMax.to( menuOptionsArr[ idx ][ 3 ], menuAnimDuration, { css:{color: "#FFF"}, ease:menuAnimEase });  
             
             if( subMenuHol != "null" ){

@@ -1845,7 +1845,7 @@ footer
 #module-contact-holder
 {
 	position:absolute;
-	width: 500px;	
+	width: 90%;	
 	right:0;
 	margin-top: 5px;
 	padding-right: 0px;	
@@ -1857,6 +1857,7 @@ footer
 	width: 200px; 
 	height: 250px;
 	margin-top: 10px;
+	left: 10%;
 }
 .contact-information-title
 {
@@ -1923,11 +1924,11 @@ footer
 .contact-form-holder
 {
 	position:relative;
-	float:left;
-	width: 56%; 
+	float:right;
+	width: 40%; 
 	height: 250px;
 	margin-top: 10px;
-	margin-left: 4%;
+	margin-right: 10%;
 }
 .contact-form-holder form
 {
@@ -1970,20 +1971,21 @@ footer
 .form-input-half-right
 {
 	position:relative;
-	float:left;
+	float:right;
 	width: 48%;  
 	height: 30px;
-	margin: 2px auto;
-	margin-left: 2%;
+	margin: 2px 0;
+	margin-right: 0px;
 }
 
 .form-input-large
 {
 	position:relative;
 	float: left;
-	width: 98.5%;  
+	width: 99.7%;  
 	height:30px;
 	margin: 5px 1% 2px 0;
+	right: 0px;
 }
 .form-input-large input
 {
@@ -1993,7 +1995,7 @@ footer
 	width: 98.5%; 
 	height:25px;
 	top: 0px;
-	margin: 3px auto;
+	margin: 3px 0;
 	margin-left: 5px;
 	padding: 0;
 	background-color:transparent;
@@ -2011,7 +2013,7 @@ footer
 {
 	position:relative;
 	float: left;
-	width: 98.5%; 
+	width: 99.7%; 
 	height:120px;
 	margin: 5px 1% 2px 0;
 	
@@ -2078,17 +2080,17 @@ footer
 	float:right;
 	right: 0px;
 	margin-top: 6px;
-	margin-right: 2px;
-	width: 50%;
+	margin-right: 0px;
+	width: auto;
 }
 #form-reset, #form-send
 {
 	position:relative;
 	float:left;
-	width: 45%;
+	width: 80px;
 	line-height: 200%;
 	background-color: #3F3F3F;
-	margin-left: 7px;
+	margin-left: 3px;
 	cursor: pointer;
 	cursor: hand;
 }
@@ -3637,9 +3639,9 @@ h1, h2, h3, h4, h5, h6
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px)
 {
-	.template-logo{ margin-left: -80px }
+	.template-logo{ margin-left: -70px }
 	.template-menu{ margin: 0px; }
-	footer{ width: 210px; }
+	footer{ width: 150px; }
 	
 	#thumb-image-hover{ display: none; }
 	
@@ -3665,7 +3667,7 @@ h1, h2, h3, h4, h5, h6
 	
 	.module-news-vertical, #module-news-preview-holder{ width: 490px; } .news-preview-horizontal-fix, #module-news-preview-container ul li { width:400px; } 
 	
-	#module-contact-holder { width: 450px; }
+	#module-contact-holder { width: 90%; }
 
 	.module-galleries{ width: 486px; }
 	
@@ -3706,7 +3708,7 @@ h1, h2, h3, h4, h5, h6
 	
 	.module-news-vertical, #module-news-preview-holder{ width: 480px; } .news-preview-horizontal-fix, #module-news-preview-container ul li { width:390px; } 
 	
-	#module-contact-holder { width: 500px; }
+	#module-contact-holder { width: 90%; }
 	
 	.module-galleries{ width: 486px; }
 	
