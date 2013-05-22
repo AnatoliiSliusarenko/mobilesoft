@@ -2022,7 +2022,7 @@ $(window).load(function(){
             }
         }
     }
-    function animateFullWidthMedia( src ){       
+    function animateFullWidthMedia( src ){   
         var inst = $(src);
         TweenMax.to($(src).parent(), .4, {css:{ height: inst.height()}, easing:Sine.easeOut});
         TweenMax.to(inst, .4, {css:{ opacity:'1'}, easing:Sine.easeOut, onComplete:
@@ -3936,7 +3936,7 @@ $(window).load(function(){
        if( textPageInstance.length <= 0 )return;
        moduleUpdate( textPageInstanceHolder, textPageInstance, $("div:first", textPageInstance), sideType );
     }
-    function moduleUpdate_full_width( animate ){        
+    function moduleUpdate_full_width( animate ){  
         var textPageInstanceHolder   = $( txt_modCont);
         var textPageInstance         = $( "#module-full-width", textPageInstanceHolder); 
         var modWrapper               = $( "#module-wrapper", textPageInstance);  
@@ -3946,7 +3946,6 @@ $(window).load(function(){
         textPageInstance.css("width", currWindowW);
         
         if( $("#module-full-width-holder-text", modWrapper).height() > $(window).height() && touchDevice == 0){ currWindowW = currWindowW - $(t_scrBarV2).width(); }
-        
         if( animate == undefined || animate == false ){            
             textPageInstance.css("width", currWindowW);
             moduleUpdate( textPageInstanceHolder, modWrapper, $("div:first", modWrapper), sideType );
