@@ -3484,17 +3484,27 @@ $(window).load(function(){
     }
     function menuOptionHover( event ){
        //---custom add---------------------------------------
+       var offset = 0,
+           _menuWidth = menuWidth;
        if ($(event.currentTarget).hasClass('nolink')) 
        {
     	   return;
+       } else
+       if ($(event.currentTarget).hasClass('submenu')) 
+       {
+       	   offset = 20;
+       	   _menuWidth = _menuWidth.replace('px','');
+       	   _menuWidth = _menuWidth - offset;
+       	   _menuWidth = _menuWidth + "px";
        }
        //----------------------------------------------------
        var idx = event.data.idx,
            subMenuHol = menuOptionsArr[ idx ][ 5 ];
        if( event.type == "mouseenter" ){
             menuOptionsArr[ idx ][ 3 ][ 0 ].css("width", menuOptionsArr[ idx ][ 4 ]); 
-            TweenMax.to( menuOptionsArr[ idx ][ 2 ], menuAnimDuration, { css:{marginLeft: "0px", width: menuWidth}, ease:menuAnimEase });
-			TweenMax.to( menuOptionsArr[ idx ][ 3 ], menuAnimDuration, { css:{color: "#FFF"}, ease:menuAnimEase });  
+            TweenMax.to( menuOptionsArr[ idx ][ 2 ], menuAnimDuration, { css:{marginLeft: (0+offset)+"px", width: _menuWidth}, ease:menuAnimEase });
+			debugger;
+            TweenMax.to( menuOptionsArr[ idx ][ 3 ], menuAnimDuration, { css:{color: "#FFF"}, ease:menuAnimEase });  
             
             if( subMenuHol != "null" ){
                 subMenuHol.css( 'height', '').css( 'width', '');
