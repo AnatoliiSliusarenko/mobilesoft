@@ -3,11 +3,9 @@
 	cursor: default;
 }
 #adress-container {
-	display:block;
 	font-size: 13px;
 	font-style: normal;
-	margin-left:10px;
-	margin-top: 10px;
+	margin-left: 10px;
 	margin-bottom: 30px;
 }
 #adress-container span
@@ -421,9 +419,9 @@ submenu holder has overflow hidden */
 }
 footer
 { 
-	margin-top:290%;
+	display: block !important;
+	bottom: 50px;
     position:absolute;
-    display:block !important;
     width: 150px;
     height: 74px;
 	/*left: -230px;*/
