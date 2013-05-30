@@ -3985,7 +3985,7 @@ $(window).load(function(){
 
         var mapW        = window.width-get_OffsetWidth()-$("#module-scrollbar-holder_v2").width();//screen.width;
         var mapLeft     = 0;//(- get_OffsetWidth()) * .5;
-        if( mapHolder.length > 0 ){TweenMax.to(mapHolder, .3, {css:{left: mapLeft, width: mapW}, easing:Sine.easeOut});}
+        if( mapHolder.length > 0 ){TweenMax.to(mapHolder, .3, {css:{left: mapLeft, width: mapW, height: ($(window).height())/2+"px"}, easing:Sine.easeOut});}
         
         var currWindowW             = $(window).width() - get_OffsetWidth() - $(t_scrBarV2).width();
         if( touchDevice == 1){ currWindowW = $(window).width() - templateMenuW; }  

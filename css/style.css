@@ -2,32 +2,31 @@
 {
 	cursor: default;
 }
-#adress-container {
+#adress-container p{
+	color: #444444; 
 	font-size: 13px;
 	font-style: normal;
 	margin-left: 10px;
-	margin-bottom: 30px;
-}
-#adress-container span
-{
-	font-weight: bold;
-	color: black;
+	margin-bottom: 10px;
+	font-family:PT Sans;
+	font-weight: normal;
 }
 
-#adress-container strong
+#adress-container p a
 {
-	font-weight: bold;
-}
-
-#adress-container a
-{
-	color: black;
+	color: #4c4c4c; 
+	font-family:PT Sans;
+	font-weight: normal;
 	text-decoration: none;
+	font-size:11px;
 }
 #adress-container a:hover
 {
-	color: black;
+	color: #4c4c4c; 
+	font-family:PT Sans;
+	font-weight: normal;
 	text-decoration: underline;
+	font-size:11px;
 }
 
 
@@ -490,14 +489,14 @@ footer
 	background-position:0 0; 
 	background-color: #9F9F9F;	
 }
-#footer-social-holder ul li.google{ 
+#footer-social-holder ul li.linkedin{ 
 	background-position:-60px 0; 
 	background-color: #9F9F9F;	
 }
 
 #footer-social-holder ul li.twitter:hover{ background-color: #008dd3; }
 #footer-social-holder ul li.facebook:hover{ background-color: #008dd3; }
-#footer-social-holder ul li.google:hover{ background-color: #008dd3; }
+#footer-social-holder ul li.linkedin:hover{ background-color: #008dd3; }
 
 #footer-text
 {
