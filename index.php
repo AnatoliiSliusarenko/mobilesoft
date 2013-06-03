@@ -56,7 +56,11 @@
             params.allowFullScreen = "true";       
             _V_.options.flash.params = params;
     
-        </script>    
+        </script>   
+        
+        <script>
+		<?php //include_once 'php/locale.php';?>
+        </script> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
 <body>
@@ -71,7 +75,7 @@
             <div id="template-menu" class="template-menu" data-current-module-type="full_width_gallery" data-side="none" data-href="#portfolio.html"><!-- start #template-menu -->
                 <div class="menu-option-holder" data-module-type="full_width_gallery" data-side="none">
                     <div class="menu-option-background"> </div>
-                    <div class="menu-option-text"><a href="#portfolio.html" data-path-href="html/portfolio/">PORTFOLIO</a></div>
+                    <div class="menu-option-text"><a id="test" href="#portfolio.html" data-path-href="html/portfolio/">PORTFOLIO</a></div>
                 </div> 
                 <div class="menu-option-holder">
                     <div class="menu-option-background"> </div>
@@ -177,6 +181,7 @@
     
 </div>
 
+
 <div id="load-container">
 </div>
 
@@ -186,5 +191,14 @@
 <div id="footer-social-tooltip"></div>
 
 <div id="console-log"></div> 
+<script>
+$("#test").click(function(){
+	$.post("php/locale.php",{locale:"ru_RU"}, function(resp){
+debugger
+		})
+
+	return false;
+});
+</script>
 </body>
 </html>
