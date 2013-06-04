@@ -9,8 +9,8 @@ setlocale(LC_ALL , $locale);
 bindtextdomain("dictionary", "../locale");
 bind_textdomain_codeset("dictionary", 'UTF-8');
 textdomain("dictionary");
+header("Content-type: text/javascript");
 ?>
-
 var localized_menu = {
 	portfolio : "<?php echo _('portfolio') ?>",
 	about : "<?php echo _('about') ?>",

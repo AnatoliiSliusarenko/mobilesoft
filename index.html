@@ -59,7 +59,9 @@
         </script>   
         
         <script>
-		<?php //include_once 'php/locale.php';?>
+		$.post("php/locale.php", function(resp){
+			$(window).append(resp);
+		})
         </script> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
