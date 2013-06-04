@@ -4,7 +4,6 @@ $senderEmail = isset($_POST['senderEmail']) ? $_POST['senderEmail'] : '';
 $senderPhone = isset($_POST['senderPhone']) ? $_POST['senderPhone'] : '';
 $senderMessage = isset($_POST['senderMessage']) ? $_POST['senderMessage'] : '';
 
-
 $text = 'Sender name: '.$senderName."\n";
 $text .= 'Sender email: '.$senderEmail."\n";
 $text .= 'Sender phone: '.$senderPhone."\n\n";
@@ -19,6 +18,6 @@ if($mail)
 {
 	$message = "Some problems with server...";
 }
-$answer = array('result' => $mail, 'msg' => $text);
+$answer =ц array('result' => $mail, 'msg' => $text);
 print json_encode($answer);
 ?>

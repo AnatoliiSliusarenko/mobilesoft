@@ -42,6 +42,8 @@
         <script type="text/javascript" src="js/link.net.js"></script> 
         <link rel="stylesheet" href="js/video-js/video-js.min.css" media="screen" />
         <script type="text/javascript" src="js/video-js/video.min.js"></script>
+        <script type="text/javascript" src="js/knockout-2.2.1.js"></script>
+        <script type="text/javascript" src="js/knockout.mapping-latest.js"></script>
         <!-- END TEMPLATE JavaScript load -->
         
         <!--<script src="http://vjs.zencdn.net/c/video.js"></script>    
@@ -55,14 +57,95 @@
             params.bgcolor = "#000000";
             params.allowFullScreen = "true";       
             _V_.options.flash.params = params;
-    
+
         </script>   
         
         <script>
-		$.post("php/locale.php", function(resp){
-			$(window).append(resp);
-		})
-        </script> 
+            $.post("php/locale.php", function(resp){
+                $(window).append(resp);
+            });
+
+            function ViewModel(){
+                this.portfolio = ko.observable("PORTFOLIO");
+                this.about = ko.observable("ABOUT US");
+                this.agile = ko.observable("AGILE");
+                this.all = ko.observable("ALL");
+                this.android = ko.observable("ANDROID");
+                this.contact = ko.observable("CONTACT US");
+                this.iphone = ko.observable("IPHONE");
+                this.mobiletrends = ko.observable("MOBILE TRENDS");
+                this.projects = ko.observable("PROJECTS");
+            };
+
+            $(document).ready(function(){
+                ko.bindingHandlers.visibleFade = {
+                    init:function(element,valueAccessor){
+                        var value = valueAccessor();
+                        $(element).toggle(value());
+                    },
+                    update:function(element,valueAccessor){
+                        var value = valueAccessor();
+                        value() ? $(element).fadeIn() : $(element).fadeOut();
+                    }
+                };
+
+                ko.bindingHandlers.fade = {
+                    init: function(element, valueAccessor) {
+                        // initially don't show the element
+                        $(element).fadeOut(500);
+                    },
+                    update: function(element, valueAccessor) {
+                        var value = ko.utils.unwrapObservable(valueAccessor());
+                        $(element).fadeOut(1000, function() {
+                            // set the text of the element,
+                            // value needs to be defined outside of the fadeOut callback to work
+                            //ko.utils.setTextContent(element, value);
+                            ko.bindingHandlers.text.update(element,valueAccessor());
+                            $(element).fadeIn(1000);
+                        });
+                    }
+                };
+
+                var vm = new ViewModel();
+                ko.applyBindings(vm);
+
+
+                $('#ruBtn').on('click',function(e){
+                    e.preventDefault();
+                    $.post("php/locale.php", {locale:"ru_RU"}, function(resp){
+                        if(resp){
+                            $(window).append(resp);
+
+                            var viewModel = ko.mapping.fromJS(window.localized_menu);
+                            ko.applyBindings(viewModel);
+                        }
+                        else{
+                            alert("Sorry. Translation not available at the moment.");
+                        }
+                    });
+                });
+
+                $('#enBtn').on('click',function(e){
+                    e.preventDefault();
+                    $.post("php/locale.php", {locale:"en_US"}, function(resp){
+                        if(resp){
+                            $(window).append(resp);
+                            var viewModel = ko.mapping.fromJS(window.localized_menu);
+                            ko.applyBindings(viewModel);
+                        }
+                        else{
+                            alert("Sorry. Translation not available at the moment.");
+                        }
+                    });
+                });
+            });
+
+
+
+
+
+
+        </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
 <body>
@@ -70,25 +153,33 @@
 <div class="main-template-loader"></div>
 
 <div id="template-wrapper">
-    <div id="menu-container"><!-- start #menu-container -->        
+    <div id="menu-container"><!-- start #menu-container -->
+        <div >
+            <a href='#' id="ruBtn">RU</a>
+            <a href='#' id="enBtn">EN</a>
+        </div>
         <div class="menu-content-holder"><!-- start .menu-content-holder -->
             <div class="menu-background"></div>
             <div id="template-logo" class="template-logo" data-href="#portfolio.html"></div> 
             <div id="template-menu" class="template-menu" data-current-module-type="full_width_gallery" data-side="none" data-href="#portfolio.html"><!-- start #template-menu -->
                 <div class="menu-option-holder" data-module-type="full_width_gallery" data-side="none">
                     <div class="menu-option-background"> </div>
-                    <div class="menu-option-text"><a id="test" href="#portfolio.html" data-path-href="html/portfolio/">PORTFOLIO</a></div>
+                    <div class="menu-option-text">
+                        <a id="test" data-bind="fade: portfolio"  href="#portfolio.html" data-path-href="html/portfolio/"><!--PORTFOLIO--></a>
+                    </div>
                 </div> 
                 <div class="menu-option-holder">
                     <div class="menu-option-background"> </div>
                     <div class="menu-option-text">
-                        <a href="#">ABOUT US</a>
+                        <a href="#" data-bind="fade:about"><!--ABOUT US--></a>
                         <!--<div class="menu-option-sign">+</div>-->
                     </div>
                     <div class="sub-menu-holder">
                         <div class="sub-menu-option-holder" data-module-type="text_page" data-side="height">
                             <div class="sub-menu-option-background"></div>
-                            <div class="sub-menu-option-text"><a href="#about_us.html" data-path-href="html/about_us/">About us</a></div>
+                            <div class="sub-menu-option-text">
+                                <a href="#about_us.html" data-path-href="html/about_us/">About us</a>
+                            </div>
                         </div>
                         <div class="sub-menu-option-holder" data-module-type="text_page" data-side="none">
                             <div class="sub-menu-option-background"></div>
@@ -107,36 +198,48 @@
                 
                 <div class="menu-option-holder nolink">
                     <div class="menu-option-background"> </div>
-                    <div class="menu-option-text"><a href="#">PROJECTS</a></div>
+                    <div class="menu-option-text">
+                        <a href="#" data-bind="fade:projects" ><!--PROJECTS--></a></div>
                     <div class="sub-menu-holder">
                     </div>
                 </div> 
                 
                 <div class="menu-option-holder submenu" data-module-type="full_width_gallery" data-side="none">
                     <div class="menu-option-background"> </div>
-                    <div class="menu-option-text"><a href="#all.html" data-path-href="html/portfolio/"><span>- ALL</span></a></div>
+                    <div class="menu-option-text">
+                        <a href="#all.html"  data-path-href="html/portfolio/">-<span data-bind="fade:all"> <!-- ALL--></span></a>
+                    </div>
                 </div> 
                 <div class="menu-option-holder submenu" data-module-type="full_width_gallery" data-side="none">
                     <div class="menu-option-background"> </div>
-                    <div class="menu-option-text"><a href="#iphone.html" data-path-href="html/portfolio/"><span>- IPHONE</span></a></div>
+                    <div class="menu-option-text">
+                        <a href="#iphone.html" data-path-href="html/portfolio/">-<span data-bind="fade:iphone" >  <!--IPHONE--></span></a>
+                    </div>
                 </div> 
                 <div class="menu-option-holder submenu" data-module-type="full_width_gallery" data-side="none">
                     <div class="menu-option-background"> </div>
-                    <div class="menu-option-text"><a href="#android.html" data-path-href="html/portfolio/"><span>- ANDROID</span></a></div>
+                    <div class="menu-option-text">
+                        <a href="#android.html"  data-path-href="html/portfolio/">-<span data-bind="fade:android"> <!--ANDROID--></span></a></div>
                 </div>
                 
                 <div class="menu-option-holder" data-module-type="full_width" data-side="custom">
                     <div class="menu-option-background"> </div>
-                    <div class="menu-option-text"><a href="#agile.html" data-path-href="html/agile/">AGILE</a></div>
+                    <div class="menu-option-text">
+                        <a href="#agile.html"  data-bind="fade:agile" data-path-href="html/agile/"><!--AGILE--></a>
+                    </div>
                 </div>  
                       
                 <div class="menu-option-holder" data-module-type="full_width" data-side="custom">
                     <div class="menu-option-background"> </div>
-                    <div class="menu-option-text"><a href="#mobiletrends.html" data-path-href="html/mobiletrends/">MOBILE TRENDS</a></div>
+                    <div class="menu-option-text">
+                        <a href="#mobiletrends.html" data-bind="fade:mobiletrends"  data-path-href="html/mobiletrends/"><!--MOBILE TRENDS--></a>
+                    </div>
                 </div> 
                 <div class="menu-option-holder" data-module-type="contact" data-side="custom">
                     <div class="menu-option-background"> </div>
-                    <div class="menu-option-text"><a href="#contact.html" data-path-href="html/contact/">CONTACT US</a></div>
+                    <div class="menu-option-text">
+                        <a href="#contact.html" data-bind="fade:contact" data-path-href="html/contact/"><!--CONTACT US--></a>
+                    </div>
                 </div>            
             </div><!-- end #template-menu -->  
             <div id="template-smpartphone-menu">
@@ -150,6 +253,7 @@
                     <option value="#contact.html" /> CONTACT US
                 </select>
             </div>
+
             <footer>
             	<div id="adress-container">
             		<p>47, Shandora Petefi sq.<br />Uzhhorod, Ukraine</p>
@@ -196,8 +300,8 @@
 <script>
 $("#test").click(function(){
 	$.post("php/locale.php",{locale:"ru_RU"}, function(resp){
-debugger
-		})
+            debugger;
+		});
 
 	return false;
 });
