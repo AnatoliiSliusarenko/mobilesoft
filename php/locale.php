@@ -1,11 +1,11 @@
 <?php
-$locale = "en_EN";
+$locale = "en_US";
 if(isset($_POST["locale"])) $locale = $_POST["locale"];
 
 putenv('LC_ALL='.$locale);
 setlocale(LC_ALL , $locale);
 
-echo setlocale(LC_ALL , 0);
+//echo setlocale(LC_ALL , 0);
 bindtextdomain("dictionary", "../locale");
 bind_textdomain_codeset("dictionary", 'UTF-8');
 textdomain("dictionary");
