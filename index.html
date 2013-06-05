@@ -61,9 +61,6 @@
         </script>   
         
         <script>
-            $.post("php/locale.php", function(resp){
-                $(window).append(resp);
-            });
 
             var MobSoft = {
                 ViewModel : function(){
@@ -91,12 +88,31 @@
                             alert("Sorry. Translation not available at the moment.");
                         }
                     });
+                },
+                saveToLocalStorage : function(key,value){
+                    var storage = window.localStorage;
+                    if(storage == typeof undefined){
+                        return false;
+                    }
+                    storage.setItem(key,value);
+                    return true;
+                },
+                getFromLocalStorage : function(key){
+                    var storage = window.localStorage;
+                    if(storage == typeof undefined){
+                        return null;
+                    }
+                    return storage.getItem(key);
                 }
             };
 
 
             $(document).ready(function(){
                 var mobsoft = MobSoft;
+                var language = mobsoft.getFromLocalStorage('selectedLanguage');
+                if(language !== null){
+
+                }
 
                 ko.bindingHandlers.fade = {
                     init: function(element, valueAccessor) {
