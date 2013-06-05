@@ -113,8 +113,9 @@
                 if(language !== null){
                      mobsoft.switchLanguage(language);
                 } else{
-                    var vm = new mobsoft.ViewModel();
-                    ko.applyBindings(vm);
+                    mobsoft.switchLanguage('en_US');
+                    //var vm = new mobsoft.ViewModel();
+                    //ko.applyBindings(vm);
                 }
 
                 ko.bindingHandlers.fade = {
@@ -258,6 +259,7 @@
        		    </div>
             	<div id="adress-container">
             		<p data-bind="fade:localAddress"></p>
+                    <p data-bind="fade:globalAddress"></p>
 					<p><a href="tel:+380967098615" >+38 096 709 86 15</a></p>
 					<p><a href="mailto:info@mobilesoft365.com">info@mobilesoft365.com</a></p>
 				</div>

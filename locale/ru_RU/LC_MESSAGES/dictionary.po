@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: mobilesoft365\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-04 18:37+0200\n"
-"PO-Revision-Date: 2013-06-05 10:15+0200\n"
-"Last-Translator: Антон <antonsav89@gmail.com>\n"
+"PO-Revision-Date: 2013-06-05 11:19+0300\n"
+"Last-Translator: Anatoliy Slyusarenko <dj.slyusar@rambler.ru>\n"
 "Language-Team: mobilesoft365 <info@mobilesoft365.com>\n"
 "Language: en_UA\n"
 "MIME-Version: 1.0\n"
@@ -54,8 +54,9 @@ msgstr "КОНТАКТЫ"
 
 #: ../../../php/locale.php:24
 msgid "localAddress"
-msgstr "пл. Шандора Петефи, 47"
+msgstr "пл. Ш. Петефи, 47"
 
 #: ../../../php/locale.php:25
 msgid "globalAddress"
 msgstr "Ужгород, Украина"
+
