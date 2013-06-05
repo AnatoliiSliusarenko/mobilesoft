@@ -112,8 +112,16 @@
                 var language = mobsoft.getFromLocalStorage('selectedLanguage');
                 if(language !== null){
                      mobsoft.switchLanguage(language);
+                              // alert(language);
+                     if(language=="en_US"){
+                     $('#enBtn').addClass('active');
+                     }else if(language=="ru_RU"){
+                     $('#ruBtn').addClass('active');
+                     }
                 } else{
                     mobsoft.switchLanguage('en_US');
+                    $('#enBTn').addClass('active');
+                    alert('active');
                     //var vm = new mobsoft.ViewModel();
                     //ko.applyBindings(vm);
                 }
@@ -138,14 +146,19 @@
                     e.preventDefault();
                     mobsoft.saveToLocalStorage('selectedLanguage', 'ru_RU')
                     mobsoft.switchLanguage('ru_RU');
+                     $('#ruBtn').addClass('active');
+                     $('#enBtn').removeClass('active');
                 });
 
                 $('#enBtn').on('click',function(e){
                     e.preventDefault();
                     mobsoft.saveToLocalStorage('selectedLanguage', 'en_US')
                     mobsoft.switchLanguage('en_US');
+                     $('#enBtn').addClass('active');
+            $('#ruBtn').removeClass('active');
                 });
             });
+           
         </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
