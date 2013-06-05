@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: mobilesoft365\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-04 18:37+0200\n"
-"PO-Revision-Date: 2013-06-04 18:37+0200\n"
+"PO-Revision-Date: 2013-06-05 10:15+0200\n"
 "Last-Translator: Антон <antonsav89@gmail.com>\n"
 "Language-Team: mobilesoft365 <info@mobilesoft365.com>\n"
 "Language: en_UA\n"
@@ -30,15 +30,15 @@ msgstr "ПРОЕКТЫ"
 
 #: ../../../php/locale.php:18
 msgid "all"
-msgstr "ВСЕ"
+msgstr "- ВСЕ"
 
 #: ../../../php/locale.php:19
 msgid "iphone"
-msgstr "IPHONE"
+msgstr "- IPHONE"
 
 #: ../../../php/locale.php:20
 msgid "android"
-msgstr "ANDROID"
+msgstr "- ANDROID"
 
 #: ../../../php/locale.php:21
 msgid "agile"

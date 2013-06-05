@@ -65,21 +65,39 @@
                 $(window).append(resp);
             });
 
-            function ViewModel(){
-                this.portfolio = ko.observable("PORTFOLIO");
-                this.about = ko.observable("ABOUT US");
-                this.agile = ko.observable("AGILE");
-                this.all = ko.observable("ALL");
-                this.android = ko.observable("ANDROID");
-                this.contact = ko.observable("CONTACT US");
-                this.iphone = ko.observable("IPHONE");
-                this.mobiletrends = ko.observable("MOBILE TRENDS");
-                this.projects = ko.observable("PROJECTS");
-                this.localAddress = ko.observable("47, Shandora Petefi sq.");
-                this.globalAddress = ko.observable("Uzhhorod, Ukraine");
+            var MobSoft = {
+                ViewModel : function(){
+                    this.portfolio = ko.observable("PORTFOLIO");
+                    this.about = ko.observable("ABOUT US");
+                    this.agile = ko.observable("AGILE");
+                    this.all = ko.observable("- ALL");
+                    this.android = ko.observable("- ANDROID");
+                    this.contact = ko.observable("CONTACT US");
+                    this.iphone = ko.observable("- IPHONE");
+                    this.mobiletrends = ko.observable("MOBILE TRENDS");
+                    this.projects = ko.observable("PROJECTS");
+                    this.localAddress = ko.observable("47, Shandora Petefi sq.");
+                    this.globalAddress = ko.observable("Uzhhorod, Ukraine");
+                },
+
+                switchLanguage : function(language){
+                    $.post("php/locale.php", {locale:language}, function(resp){
+                        if(resp){
+                            $(window).append(resp);
+                            var viewModel = ko.mapping.fromJS(window.localized_menu);
+                            ko.applyBindings(viewModel);
+                        }
+                        else{
+                            alert("Sorry. Translation not available at the moment.");
+                        }
+                    });
+                }
             };
 
+
             $(document).ready(function(){
+                var mobsoft = MobSoft;
+
                 ko.bindingHandlers.fade = {
                     init: function(element, valueAccessor) {
                         // initially don't show the element
@@ -94,36 +112,17 @@
                     }
                 };
 
-                var vm = new ViewModel();
+                var vm = new mobsoft.ViewModel();
                 ko.applyBindings(vm);
-
 
                 $('#ruBtn').on('click',function(e){
                     e.preventDefault();
-                    $.post("php/locale.php", {locale:"ru_RU"}, function(resp){
-                        if(resp){
-                            $(window).append(resp);
-                            var viewModel = ko.mapping.fromJS(window.localized_menu);
-                            ko.applyBindings(viewModel);
-                        }
-                        else{
-                            alert("Sorry. Translation not available at the moment.");
-                        }
-                    });
+                    mobsoft.switchLanguage('ru_RU');
                 });
 
                 $('#enBtn').on('click',function(e){
                     e.preventDefault();
-                    $.post("php/locale.php", {locale:"en_US"}, function(resp){
-                        if(resp){
-                            $(window).append(resp);
-                            var viewModel = ko.mapping.fromJS(window.localized_menu);
-                            ko.applyBindings(viewModel);
-                        }
-                        else{
-                            alert("Sorry. Translation not available at the moment.");
-                        }
-                    });
+                    mobsoft.switchLanguage('en_US');
                 });
             });
         </script>
@@ -188,19 +187,19 @@
                 <div class="menu-option-holder submenu" data-module-type="full_width_gallery" data-side="none">
                     <div class="menu-option-background"> </div>
                     <div class="menu-option-text">
-                        <a href="#all.html"  data-path-href="html/portfolio/">-<span data-bind="fade:all"> <!-- ALL--></span></a>
+                        <a href="#all.html"  data-path-href="html/portfolio/"><span data-bind="fade:all"> <!-- ALL--></span></a>
                     </div>
                 </div> 
                 <div class="menu-option-holder submenu" data-module-type="full_width_gallery" data-side="none">
                     <div class="menu-option-background"> </div>
                     <div class="menu-option-text">
-                        <a href="#iphone.html" data-path-href="html/portfolio/">-<span data-bind="fade:iphone" >  <!--IPHONE--></span></a>
+                        <a href="#iphone.html" data-path-href="html/portfolio/"><span data-bind="fade:iphone" >  <!--IPHONE--></span></a>
                     </div>
                 </div> 
                 <div class="menu-option-holder submenu" data-module-type="full_width_gallery" data-side="none">
                     <div class="menu-option-background"> </div>
                     <div class="menu-option-text">
-                        <a href="#android.html"  data-path-href="html/portfolio/">-<span data-bind="fade:android"> <!--ANDROID--></span></a></div>
+                        <a href="#android.html"  data-path-href="html/portfolio/"><span data-bind="fade:android"> <!--ANDROID--></span></a></div>
                 </div>
                 
                 <div class="menu-option-holder" data-module-type="full_width" data-side="custom">
