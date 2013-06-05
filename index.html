@@ -63,19 +63,6 @@
         <script>
 
             var MobSoft = {
-                ViewModel : function(){
-                    this.portfolio = ko.observable("PORTFOLIO");
-                    this.about = ko.observable("ABOUT US");
-                    this.agile = ko.observable("AGILE");
-                    this.all = ko.observable("- ALL");
-                    this.android = ko.observable("- ANDROID");
-                    this.contact = ko.observable("CONTACT US");
-                    this.iphone = ko.observable("- IPHONE");
-                    this.mobiletrends = ko.observable("MOBILE TRENDS");
-                    this.projects = ko.observable("PROJECTS");
-                    this.localAddress = ko.observable("47, Shandora Petefi sq.");
-                    this.globalAddress = ko.observable("Uzhhorod, Ukraine");
-                },
 
                 switchLanguage : function(language){
                     $.post("php/locale.php", {locale:language}, function(resp){
@@ -120,10 +107,13 @@
                      }
                 } else{
                     mobsoft.switchLanguage('en_US');
+<<<<<<< Updated upstream
                     $('#enBTn').addClass('active');
                     alert('active');
                     //var vm = new mobsoft.ViewModel();
                     //ko.applyBindings(vm);
+=======
+>>>>>>> Stashed changes
                 }
 
                 ko.bindingHandlers.fade = {

@@ -6,7 +6,7 @@
  **/
  
  /* start GENERAL CUSTOMIZATION PROPERTIES */
-var templateBaseURL         = "http://localhost/mobilesoft/";/*"http://themes.mediacreed.com/html/synergy/"*/
+var templateBaseURL         = "http://localhost/YTS/mobilesoft/mobilesoft/";/*"http://themes.mediacreed.com/html/synergy/"*/
 var themeColor              = "#008dd3";
 var menuActive              = true;
 var menuHoverActive         = true; /* it will change to false if menuActive == true. If 'menuActive' 
