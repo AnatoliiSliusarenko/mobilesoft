@@ -111,7 +111,10 @@
                 var mobsoft = MobSoft;
                 var language = mobsoft.getFromLocalStorage('selectedLanguage');
                 if(language !== null){
-
+                     mobsoft.switchLanguage(language);
+                } else{
+                    var vm = new mobsoft.ViewModel();
+                    ko.applyBindings(vm);
                 }
 
                 ko.bindingHandlers.fade = {
@@ -128,16 +131,17 @@
                     }
                 };
 
-                var vm = new mobsoft.ViewModel();
-                ko.applyBindings(vm);
+
 
                 $('#ruBtn').on('click',function(e){
                     e.preventDefault();
+                    mobsoft.saveToLocalStorage('selectedLanguage', 'ru_RU')
                     mobsoft.switchLanguage('ru_RU');
                 });
 
                 $('#enBtn').on('click',function(e){
                     e.preventDefault();
+                    mobsoft.saveToLocalStorage('selectedLanguage', 'en_US')
                     mobsoft.switchLanguage('en_US');
                 });
             });
