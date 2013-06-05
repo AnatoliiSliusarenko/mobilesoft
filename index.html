@@ -113,8 +113,9 @@
                 if(language !== null){
                      mobsoft.switchLanguage(language);
                 } else{
-                    var vm = new mobsoft.ViewModel();
-                    ko.applyBindings(vm);
+                    mobsoft.switchLanguage('en_US');
+                    //var vm = new mobsoft.ViewModel();
+                    //ko.applyBindings(vm);
                 }
 
                 ko.bindingHandlers.fade = {
