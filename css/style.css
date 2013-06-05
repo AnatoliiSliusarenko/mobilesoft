@@ -419,7 +419,7 @@ submenu holder has overflow hidden */
 footer
 { 
 	display: block !important;
-	bottom: 50px;
+	bottom: 80px;
     position:absolute;
     width: 150px;
     height: 74px;
@@ -3735,6 +3735,31 @@ h1, h2, h3, h4, h5, h6
 	#module-news-vertical-container{ margin: 35px 30px; } #module-news-preview-container{margin: 29px 25px;}
 	.module-news-vertical, #module-news-preview-holder{ width: 320px; } .news-preview-horizontal-fix, #module-news-preview-container ul li { width:250px; }
 	.news-item-vertical-read-more{ width: 30%; } 
-	
 	.module-galleries{ width: 100%; }
 } 
+#language-menu{
+display:block;
+background:transparent;
+width:62px;
+height:30px;
+margin:0 10px;
+}
+#ruBtn, #enBtn{
+float: left;
+width: 30px;
+height: 30px;
+cursor: pointer;
+margin-right: 1px;
+display:block;
+font-size:14px;
+font-family:Arial;
+font-weight:bold;
+text-decoration:none;
+background-color:#9f9f9f;
+text-align:center;
+line-height:30px;
+color:#fff;
+}
+#ruBtn:hover, #enBtn:hover{
+background-color:#008dd3;
+}
