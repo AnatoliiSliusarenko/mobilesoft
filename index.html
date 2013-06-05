@@ -75,26 +75,14 @@
                 this.iphone = ko.observable("IPHONE");
                 this.mobiletrends = ko.observable("MOBILE TRENDS");
                 this.projects = ko.observable("PROJECTS");
+                this.localAddress = ko.observable("47, Shandora Petefi sq.");
+                this.globalAddress = ko.observable("Uzhhorod, Ukraine");
             };
 
             $(document).ready(function(){
-                ko.bindingHandlers.visibleFade = {
-                    init:function(element,valueAccessor){
-                        var value = valueAccessor();
-                        $(element).toggle(value());
-                    },
-                    update:function(element,valueAccessor){
-                        var value = valueAccessor();
-                        value() ? $(element).fadeIn() : $(element).fadeOut();
-                    }
-                };
-
                 ko.bindingHandlers.fade = {
                     init: function(element, valueAccessor) {
                         // initially don't show the element
-                        $(element).fadeOut(500);
-                    },
-                    update: function(element, valueAccessor) {
                         var value = ko.utils.unwrapObservable(valueAccessor());
                         $(element).fadeOut(1000, function() {
                             // set the text of the element,
@@ -115,7 +103,6 @@
                     $.post("php/locale.php", {locale:"ru_RU"}, function(resp){
                         if(resp){
                             $(window).append(resp);
-
                             var viewModel = ko.mapping.fromJS(window.localized_menu);
                             ko.applyBindings(viewModel);
                         }
@@ -139,12 +126,6 @@
                     });
                 });
             });
-
-
-
-
-
-
         </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
@@ -256,13 +237,10 @@
 
             <footer>
             	<div id="adress-container">
-            		<p>47, Shandora Petefi sq.<br />Uzhhorod, Ukraine</p>
-					<p><a href="tel:+380967098615">+38 096 709 86 15</a></p>
+            		<p data-bind="fade:localAddress"></p>
+					<p><a href="tel:+380967098615" >+38 096 709 86 15</a></p>
 					<p><a href="mailto:info@mobilesoft365.com">info@mobilesoft365.com</a></p>
 				</div>
-            	
-            
-            
                 
                 <div id="footer-social">            
                     <div id="footer-social-holder">
@@ -296,15 +274,6 @@
 </div>
 <div id="footer-social-tooltip"></div>
 
-<div id="console-log"></div> 
-<script>
-$("#test").click(function(){
-	$.post("php/locale.php",{locale:"ru_RU"}, function(resp){
-            debugger;
-		});
-
-	return false;
-});
-</script>
+<div id="console-log"></div>
 </body>
 </html>

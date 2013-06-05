@@ -20,5 +20,7 @@ var localized_menu = {
 	android : "<?php echo _('android') ?>",
 	agile : "<?php echo _('agile') ?>",
 	mobiletrends : "<?php echo _('mobiletrends') ?>",
-	contact : "<?php echo _('contact') ?>"
+	contact : "<?php echo _('contact') ?>",
+	localAddress : "<?php echo _('localAddress') ?>",
+	globalAddress : "<?php echo _('globalAddress') ?>"
 }
